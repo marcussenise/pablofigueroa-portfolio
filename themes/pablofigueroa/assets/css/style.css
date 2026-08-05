@@ -1,0 +1,985 @@
+/* =========================================================
+   Pablo Figueroa — Portfólio
+   Bege claro (não branco puro) + tinta escura + laranja/dourado de destaque
+   ========================================================= */
+
+:root {
+	--pf-bg: #ece4d3;
+	--pf-bg-alt: #e1d7bf;
+	--pf-bg-card: #f8f3e8;
+	--pf-white: #2b2620;
+	--pf-white-soft: #5e5748;
+	--pf-accent: #f59e0b;
+	--pf-accent-dark: #db7b66;
+	--pf-border: rgba(43, 38, 32, 0.14);
+	--pf-radius: 14px;
+	--pf-max: 1180px;
+	--pf-font-head: 'Poppins', 'Segoe UI', sans-serif;
+	--pf-font-body: 'Inter', 'Segoe UI', sans-serif;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0;
+	background: var(--pf-bg);
+	color: var(--pf-white);
+	font-family: var(--pf-font-body);
+	line-height: 1.65;
+	overflow-x: hidden;
+}
+
+img {
+	max-width: 100%;
+	display: block;
+}
+
+a {
+	color: var(--pf-accent);
+	text-decoration: none;
+	transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+a:hover {
+	color: var(--pf-white);
+}
+
+h1, h2, h3, h4 {
+	font-family: var(--pf-font-head);
+	color: var(--pf-white);
+	line-height: 1.2;
+	margin: 0 0 0.6em;
+}
+
+.pf-container {
+	max-width: var(--pf-max);
+	margin: 0 auto;
+	padding: 0 24px;
+}
+
+.pf-eyebrow {
+	display: inline-block;
+	font-family: var(--pf-font-head);
+	font-weight: 700;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	font-size: 0.78rem;
+	color: var(--pf-accent);
+	margin-bottom: 0.9em;
+}
+
+.pf-section {
+	position: relative;
+	padding: 72px 0;
+}
+
+.pf-section-alt {
+	background: var(--pf-bg-alt);
+}
+
+/* ---------- Botões ---------- */
+.pf-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	padding: 14px 28px;
+	border-radius: 999px;
+	font-family: var(--pf-font-head);
+	font-weight: 600;
+	font-size: 0.95rem;
+	border: 2px solid var(--pf-accent);
+	cursor: pointer;
+	transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.pf-btn-solid {
+	background: var(--pf-accent);
+	color: #1a1109;
+}
+
+.pf-btn-solid:hover {
+	background: var(--pf-accent-dark);
+	color: #1a1109;
+	transform: translateY(-2px);
+}
+
+.pf-btn-outline {
+	background: transparent;
+	color: var(--pf-white);
+}
+
+.pf-btn-outline:hover {
+	background: var(--pf-accent);
+	color: #1a1109;
+	transform: translateY(-2px);
+}
+
+/* ---------- Header ---------- */
+.pf-header {
+	position: sticky;
+	top: 0;
+	z-index: 100;
+	background: transparent !important;
+	border-bottom: 1px solid transparent;
+	transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+.pf-header.pf-header-scrolled {
+	background: rgba(236, 228, 211, 0.92);
+	backdrop-filter: blur(10px);
+	border-bottom: 1px solid var(--pf-border);
+}
+
+.pf-header-inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 16px 24px;
+	max-width: var(--pf-max);
+	margin: 0 auto;
+}
+
+.pf-brand {
+	display: flex;
+	flex-direction: column;
+	line-height: 1.1;
+}
+
+.pf-brand-name {
+	font-family: var(--pf-font-head);
+	font-weight: 800;
+	font-size: 1.35rem;
+	color: var(--pf-white);
+	letter-spacing: 0.01em;
+}
+
+.pf-brand-name span {
+	color: var(--pf-accent);
+}
+
+.pf-brand-sub {
+	font-size: 0.72rem;
+	text-transform: uppercase;
+	letter-spacing: 0.12em;
+	color: var(--pf-white-soft);
+	margin-top: 2px;
+}
+
+.pf-nav-toggle {
+	display: none;
+	background: transparent;
+	border: none;
+	width: 40px;
+	height: 40px;
+	position: relative;
+	cursor: pointer;
+	z-index: 110;
+}
+
+.pf-nav-toggle span,
+.pf-nav-toggle::before,
+.pf-nav-toggle::after {
+	content: '';
+	position: absolute;
+	left: 8px;
+	right: 8px;
+	height: 2px;
+	background: var(--pf-white);
+	transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.pf-nav-toggle::before { top: 12px; }
+.pf-nav-toggle span { top: 19px; }
+.pf-nav-toggle::after { top: 26px; }
+
+.pf-nav-toggle.is-active::before {
+	transform: translateY(7px) rotate(45deg);
+}
+.pf-nav-toggle.is-active::after {
+	transform: translateY(-7px) rotate(-45deg);
+}
+.pf-nav-toggle.is-active span {
+	opacity: 0;
+}
+
+.pf-nav-menu {
+	list-style: none;
+	display: flex;
+	gap: 30px;
+	margin: 0;
+	padding: 0;
+}
+
+.pf-nav-menu a {
+	font-family: var(--pf-font-head);
+	font-weight: 500;
+	font-size: 0.92rem;
+	color: var(--pf-white);
+}
+
+.pf-nav-menu a:hover {
+	color: var(--pf-accent);
+}
+
+/* ---------- Hero ---------- */
+.pf-hero {
+	position: relative;
+	padding: 90px 0 80px;
+	overflow: hidden;
+}
+
+.pf-hero-grid {
+	display: grid;
+	grid-template-columns: 1.1fr 0.9fr;
+	gap: 56px;
+	align-items: center;
+	position: relative;
+	z-index: 2;
+}
+
+.pf-hero-title {
+	font-size: clamp(2.4rem, 5vw, 3.6rem);
+	font-weight: 800;
+	margin-bottom: 0.25em;
+}
+
+.pf-hero-title span {
+	color: var(--pf-accent);
+}
+
+.pf-hero-subtitle {
+	font-family: var(--pf-font-head);
+	font-weight: 600;
+	font-size: 1.15rem;
+	color: var(--pf-accent);
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	margin-bottom: 1.1em;
+}
+
+.pf-hero-lead {
+	font-size: 1.05rem;
+	color: var(--pf-white-soft);
+	max-width: 46ch;
+	margin-bottom: 2em;
+}
+
+.pf-hero-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+}
+
+.pf-hero-photos {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	z-index: 2;
+}
+
+.pf-hero-photos .pf-photo {
+	max-width: 360px;
+	width: 100%;
+}
+
+.pf-photo {
+	border-radius: var(--pf-radius);
+	overflow: hidden;
+	border: 1px solid var(--pf-border);
+	box-shadow: 0 20px 44px rgba(43, 38, 32, 0.16);
+	background: var(--pf-bg-card);
+}
+
+.pf-photo img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	aspect-ratio: 3 / 4;
+}
+
+.pf-bio-photo {
+	max-width: 320px;
+	margin: 24px 0 8px;
+}
+
+/* Flutuação sutil ao mover o mouse — ver assets/js/main.js */
+.pf-float {
+	transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+	will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.pf-float {
+		transition: none;
+	}
+}
+
+/* ---------- Elementos decorativos Sankofa ---------- */
+.pf-sankofa {
+	position: absolute;
+	pointer-events: none;
+	opacity: 0.03;
+	z-index: 1;
+}
+
+.pf-sankofa-1 {
+	top: 20px;
+	left: 20px;
+	width: 250px;
+}
+
+.pf-sankofa-2 {
+	bottom: -100px;
+	right: -60px;
+	width: 380px;
+	opacity: .02;
+}
+
+.pf-sankofa-small {
+	position: absolute;
+	width: 120px;
+	opacity: 0.1;
+	pointer-events: none;
+}
+
+/* ---------- Bio ---------- */
+.pf-bio-grid {
+	display: grid;
+	grid-template-columns: 0.9fr 1.1fr;
+	gap: 56px;
+	align-items: start;
+}
+
+.pf-bio-text p {
+	color: var(--pf-white-soft);
+	font-size: 1.02rem;
+	margin-bottom: 1.2em;
+}
+
+.pf-quote {
+	border-left: 3px solid var(--pf-accent);
+	padding: 4px 0 4px 22px;
+	font-family: var(--pf-font-head);
+	font-style: italic;
+	font-size: 1.15rem;
+	color: var(--pf-white);
+	margin: 1.6em 0;
+}
+
+.pf-books {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 18px;
+	margin-top: 12px;
+}
+
+.pf-book-card {
+	background: var(--pf-bg-card);
+	border: 1px solid var(--pf-border);
+	border-radius: var(--pf-radius);
+	padding: 22px;
+}
+
+.pf-book-card h4 {
+	color: var(--pf-accent);
+	font-size: 1rem;
+	margin-bottom: 6px;
+}
+
+.pf-book-card p {
+	color: var(--pf-white-soft);
+	font-size: 0.9rem;
+	margin: 0;
+}
+
+/* ---------- Expertise ---------- */
+.pf-chip-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin-top: 8px;
+}
+
+.pf-chip {
+	background: var(--pf-bg-card);
+	border: 1px solid var(--pf-border);
+	color: var(--pf-white);
+	padding: 10px 20px;
+	border-radius: 999px;
+	font-size: 0.9rem;
+	font-weight: 500;
+}
+
+/* ---------- Cards de portfólio ---------- */
+.pf-portfolio-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 28px;
+}
+
+.pf-portfolio-card {
+	position: relative;
+	background: var(--pf-bg-card);
+	border: 1px solid var(--pf-border);
+	border-radius: var(--pf-radius);
+	padding: 40px 32px;
+	overflow: hidden;
+	transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.pf-portfolio-card:hover {
+	transform: translateY(-6px);
+	border-color: var(--pf-accent);
+}
+
+.pf-portfolio-card h3 {
+	font-size: 1.5rem;
+	margin-bottom: 0.4em;
+}
+
+.pf-portfolio-card p {
+	color: var(--pf-white-soft);
+	margin-bottom: 1.6em;
+}
+
+.pf-portfolio-card .pf-btn {
+	position: relative;
+	z-index: 2;
+}
+
+.pf-portfolio-tag {
+	display: inline-block;
+	font-size: 0.72rem;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	font-weight: 700;
+	color: var(--pf-accent);
+	margin-bottom: 14px;
+}
+
+/* ---------- Lista de experiência ---------- */
+.pf-timeline {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	border-left: 2px solid var(--pf-border);
+}
+
+.pf-timeline li {
+	position: relative;
+	padding: 4px 0 26px 28px;
+}
+
+.pf-timeline li::before {
+	content: '';
+	position: absolute;
+	left: -7px;
+	top: 8px;
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	background: var(--pf-accent);
+}
+
+.pf-timeline strong {
+	color: var(--pf-white);
+	font-family: var(--pf-font-head);
+	display: block;
+	margin-bottom: 2px;
+}
+
+.pf-timeline span {
+	color: var(--pf-white-soft);
+	font-size: 0.92rem;
+}
+
+/* ---------- Galeria ---------- */
+.pf-gallery {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 16px;
+}
+
+.pf-gallery img {
+	border-radius: var(--pf-radius);
+	aspect-ratio: 4/5;
+	object-fit: cover;
+	border: 1px solid var(--pf-border);
+}
+
+/* ---------- Contato ---------- */
+.pf-contact {
+	position: relative;
+}
+
+.pf-contact-grid {
+	display: grid;
+	grid-template-columns: 1.2fr 0.8fr;
+	gap: 40px;
+	align-items: start;
+	position: relative;
+	z-index: 2;
+}
+
+.pf-contact-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.pf-contact-item {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	background: var(--pf-bg-card);
+	border: 1px solid var(--pf-border);
+	border-radius: var(--pf-radius);
+	padding: 18px 22px;
+	transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.pf-contact-item:hover {
+	border-color: var(--pf-accent);
+	transform: translateX(4px);
+}
+
+.pf-contact-icon {
+	width: 42px;
+	height: 42px;
+	flex-shrink: 0;
+	border-radius: 50%;
+	background: var(--pf-accent);
+	color: #1a1109;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 800;
+	font-family: var(--pf-font-head);
+	padding: 9px;
+}
+
+.pf-contact-icon img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.pf-contact-item .pf-contact-label {
+	display: block;
+	font-size: 0.75rem;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: var(--pf-white-soft);
+}
+
+.pf-contact-item .pf-contact-value {
+	display: block;
+	color: var(--pf-white);
+	font-weight: 600;
+	font-family: var(--pf-font-head);
+}
+
+.pf-contact-card {
+	background: var(--pf-bg-card);
+	border: 1px solid var(--pf-border);
+	border-radius: var(--pf-radius);
+	padding: 24px;
+}
+
+.pf-contact-card h3 {
+	font-size: 1.1rem;
+	margin-bottom: 0.4em;
+}
+
+.pf-whatsapp-cta {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
+	width: 100%;
+	background: #25d366;
+	color: #0a1a10;
+	border: none;
+	border-radius: 999px;
+	padding: 16px;
+	font-family: var(--pf-font-head);
+	font-weight: 700;
+	font-size: 1rem;
+	cursor: pointer;
+	margin-top: 20px;
+	transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.pf-whatsapp-cta:hover {
+	background: #1fb457;
+	transform: translateY(-2px);
+}
+
+.pf-whatsapp-cta img {
+	width: 22px;
+	height: 22px;
+	object-fit: contain;
+}
+
+/* ---------- Footer ---------- */
+.pf-footer {
+	background: #ded1ae;
+	border-top: 1px solid var(--pf-border);
+	padding: 48px 0 28px;
+	position: relative;
+	overflow: hidden;
+}
+
+.pf-footer-grid {
+	display: grid;
+	grid-template-columns: 1.2fr 1fr;
+	gap: 40px;
+	position: relative;
+	z-index: 2;
+}
+
+.pf-footer-brand {
+	font-family: var(--pf-font-head);
+	font-weight: 800;
+	font-size: 1.3rem;
+	margin-bottom: 8px;
+}
+
+.pf-footer-brand span {
+	color: var(--pf-accent);
+}
+
+.pf-footer-tagline {
+	color: var(--pf-white-soft);
+	max-width: 40ch;
+}
+
+.pf-footer-social {
+	display: flex;
+	gap: 14px;
+	margin-top: 18px;
+}
+
+.pf-footer-social a {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	border: 1px solid #1a1109;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--pf-white);
+	font-size: 0.85rem;
+	font-weight: 700;
+	padding: 9px;
+	background: transparent;
+}
+
+.pf-footer-social a img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.pf-footer-social a:hover {
+	background: var(--pf-accent);
+	color: #1a1109;
+	border-color: var(--pf-accent);
+}
+
+.pf-footer-col h4 {
+	font-size: 0.85rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	color: var(--pf-accent);
+	margin-bottom: 14px;
+}
+
+.pf-footer-col ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.pf-footer-col a {
+	color: var(--pf-white-soft);
+	font-size: 0.94rem;
+}
+
+.pf-footer-bottom {
+	margin-top: 40px;
+	padding-top: 20px;
+	border-top: 1px solid var(--pf-border);
+	font-size: 0.82rem;
+	color: var(--pf-white-soft);
+	text-align: center;
+}
+
+/* ---------- Página de portfólio: cabeçalho interno ---------- */
+.pf-page-hero {
+	padding: 64px 0 40px;
+	text-align: center;
+	position: relative;
+	overflow: hidden;
+}
+
+.pf-page-hero h1 {
+	font-size: clamp(2rem, 4.5vw, 2.9rem);
+}
+
+.pf-page-hero p {
+	color: var(--pf-white-soft);
+	max-width: 60ch;
+	margin: 0 auto;
+	font-size: 1.05rem;
+}
+
+.pf-breadcrumb {
+	display: flex;
+	justify-content: center;
+	gap: 8px;
+	font-size: 0.85rem;
+	color: var(--pf-white-soft);
+	margin-bottom: 18px;
+}
+
+.pf-breadcrumb a {
+	color: var(--pf-white-soft);
+}
+
+.pf-breadcrumb a:hover {
+	color: var(--pf-accent);
+}
+
+/* ---------- Instagram (imagem clicável) ---------- */
+.pf-instagram-frame {
+	position: relative;
+	display: block;
+	width: 100%;
+	max-width: 900px;
+	margin: 0 auto;
+	border-radius: var(--pf-radius);
+	overflow: hidden;
+	border: 1px solid var(--pf-border);
+	box-shadow: 0 24px 50px rgba(43, 38, 32, 0.18);
+}
+
+.pf-instagram-frame img {
+	width: 100%;
+	display: block;
+	transition: transform 0.5s ease;
+}
+
+.pf-instagram-frame:hover img {
+	transform: scale(1.04);
+}
+
+.pf-instagram-handle {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: var(--pf-accent);
+	color: #1a1109;
+	font-family: var(--pf-font-head);
+	font-weight: 700;
+	font-size: 1.05rem;
+	padding: 14px 34px;
+	border-radius: 999px;
+	box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
+	transition: transform 0.2s ease, background 0.2s ease;
+	white-space: nowrap;
+}
+
+.pf-instagram-frame:hover .pf-instagram-handle {
+	background: var(--pf-accent-dark);
+	transform: translate(-50%, -50%) scale(1.06);
+}
+
+@media (max-width: 640px) {
+	.pf-instagram-handle {
+		font-size: 0.9rem;
+		padding: 11px 22px;
+	}
+}
+
+/* ---------- Conteúdo genérico (the_content) ---------- */
+.pf-page-content {
+	color: var(--pf-white-soft);
+	font-size: 1.02rem;
+}
+
+.pf-page-content h2,
+.pf-page-content h3 {
+	color: var(--pf-white);
+}
+
+.pf-page-content a {
+	text-decoration: underline;
+}
+
+.pf-page-content img {
+	border-radius: var(--pf-radius);
+	margin: 1em 0;
+}
+
+/* ---------- Responsivo — Tablet ---------- */
+@media (max-width: 1024px) {
+	.pf-bio-grid,
+	.pf-footer-grid,
+	.pf-contact-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.pf-portfolio-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.pf-gallery {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.pf-section {
+		padding: 56px 0;
+	}
+}
+
+@media (max-width: 880px) {
+	.pf-hero-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.pf-hero-content {
+		text-align: center;
+	}
+
+	.pf-hero-lead {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.pf-hero-actions {
+		justify-content: center;
+	}
+
+	.pf-hero-photos {
+		max-width: 460px;
+		margin: 0 auto;
+	}
+
+	.pf-bio-photo {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.pf-nav-toggle {
+		display: block;
+	}
+
+	.pf-nav-menu {
+		position: fixed;
+		top: 0;
+		right: -100%;
+		width: min(78vw, 340px);
+		height: 100vh;
+		background: var(--pf-bg-alt);
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+		padding: 40px;
+		gap: 28px;
+		transition: right 0.3s ease;
+		border-left: 1px solid var(--pf-border);
+		z-index: 105;
+	}
+
+	.pf-nav-menu.is-open {
+		right: 0;
+	}
+
+	.pf-nav-menu a {
+		font-size: 1.1rem;
+		cursor: pointer;
+	}
+
+	.pf-nav-overlay {
+		display: none;
+		position: fixed;
+		inset: 0;
+		z-index: 98;
+	}
+
+	.pf-nav-overlay.is-open {
+		display: block;
+	}
+}
+
+/* ---------- Responsivo — Celular ---------- */
+@media (max-width: 640px) {
+	.pf-container {
+		padding: 0 18px;
+	}
+
+	.pf-hero {
+		padding: 56px 0 48px;
+	}
+
+	.pf-hero-photos .pf-photo {
+		max-width: 260px;
+	}
+
+	.pf-bio-photo {
+		max-width: 240px;
+	}
+
+	.pf-hero-actions {
+		flex-wrap: nowrap;
+		gap: 10px;
+	}
+
+	.pf-btn {
+		width: 100%;
+		justify-content: center;
+	}
+
+	.pf-hero-actions .pf-btn {
+		width: auto;
+		flex: 1 1 0;
+		padding: 14px 12px;
+		font-size: 0.85rem;
+		white-space: nowrap;
+	}
+
+	.pf-books,
+	.pf-gallery {
+		grid-template-columns: 1fr;
+	}
+
+	.pf-brand-name {
+		font-size: 1.1rem;
+	}
+
+	.pf-brand-sub {
+		font-size: 0.62rem;
+	}
+
+	.pf-contact-item {
+		padding: 14px 16px;
+	}
+
+	.pf-section {
+		padding: 44px 0;
+	}
+}
