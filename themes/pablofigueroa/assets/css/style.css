@@ -386,6 +386,17 @@ h1, h2, h3, h4 {
 	padding: 22px;
 }
 
+.pf-book-cover {
+	width: 100%;
+	max-width: 180px;
+	aspect-ratio: 3 / 4.5;
+	object-fit: cover;
+	border-radius: calc(var(--pf-radius) - 4px);
+	border: 1px solid var(--pf-border);
+	box-shadow: 0 14px 30px rgba(43, 38, 32, 0.16);
+	margin: 0 auto 16px;
+}
+
 .pf-book-card h4 {
 	color: var(--pf-accent);
 	font-size: 1rem;
@@ -399,6 +410,27 @@ h1, h2, h3, h4 {
 }
 
 /* ---------- Expertise ---------- */
+.pf-expertise-section {
+	position: relative;
+	overflow: hidden;
+}
+
+.pf-expertise-bg {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	opacity: 0.14;
+	z-index: 1;
+	pointer-events: none;
+}
+
+.pf-expertise-content {
+	position: relative;
+	z-index: 2;
+}
+
 .pf-chip-list {
 	display: flex;
 	flex-wrap: wrap;

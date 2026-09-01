@@ -65,10 +65,12 @@ $wa_msg  = rawurlencode( 'Olá, Pablo! Vi seu portfólio e gostaria de falar sob
 
 				<div class="pf-books">
 					<div class="pf-book-card">
+						<img src="<?php echo esc_url( $img . 'surrealirico.png' ); ?>" alt="Capa do livro Surrealírico" class="pf-book-cover" loading="lazy">
 						<h4>Surrealírico</h4>
 						<p>Obra publicada — lançamento na Feira do Livro 2022.</p>
 					</div>
 					<div class="pf-book-card">
+						<img src="<?php echo esc_url( $img . 'diaspora-negra.jpeg' ); ?>" alt="Capa do livro Diáspora Negra" class="pf-book-cover" style="object-position: top;" loading="lazy">
 						<h4>Diáspora Negra</h4>
 						<p>Projeto e programa — gestão de projetos e captação de recursos.</p>
 					</div>
@@ -92,8 +94,9 @@ $wa_msg  = rawurlencode( 'Olá, Pablo! Vi seu portfólio e gostaria de falar sob
 	</section>
 
 	<!-- EXPERTISE -->
-	<section class="pf-section">
-		<div class="pf-container">
+	<section class="pf-section pf-expertise-section">
+		<img src="<?php echo esc_url( $img . 'african-pattern.jpg' ); ?>" alt="" class="pf-expertise-bg" aria-hidden="true">
+		<div class="pf-container pf-expertise-content">
 			<span class="pf-eyebrow">Áreas de expertise</span>
 			<h2>O que Pablo faz</h2>
 			<div class="pf-chip-list">
