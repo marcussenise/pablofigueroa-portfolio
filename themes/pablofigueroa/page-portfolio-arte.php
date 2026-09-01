@@ -10,8 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header();
 
 $img = get_template_directory_uri() . '/assets/img/';
-$wa_surrealirico = rawurlencode( 'Olá, Pablo! Tenho interesse em adquirir o livro Surrealírico.' );
-$wa_diaspora     = rawurlencode( 'Olá, Pablo! Tenho interesse em saber mais sobre o projeto Diáspora Negra.' );
+$wa_diaspora = rawurlencode( 'Olá, Pablo! Tenho interesse em saber mais sobre o projeto Diáspora Negra.' );
 ?>
 
 <main id="main">
@@ -31,25 +30,75 @@ $wa_diaspora     = rawurlencode( 'Olá, Pablo! Tenho interesse em saber mais sob
 	<section class="pf-section">
 		<div class="pf-container">
 			<span class="pf-eyebrow">Obras publicadas</span>
-			<h2>Livros à venda</h2>
+			<h2>Portfólio</h2>
 
-			<div class="pf-portfolio-grid">
-				<div class="pf-portfolio-card">
-					<span class="pf-portfolio-tag">Livro</span>
-					<h3>Surrealírico</h3>
-					<p>Obra literária de Pablo Figueroa, lançada na Feira do Livro de 2022. Poesia e lirismo em diálogo com o surreal.</p>
-					<div style="text-align:center;">
-						<a class="pf-btn pf-btn-solid" target="_blank" rel="noopener noreferrer" href="https://wa.me/<?php echo esc_attr( pf_whatsapp_number() ); ?>?text=<?php echo esc_attr( $wa_surrealirico ); ?>">Comprar pelo WhatsApp</a>
-					</div>
+			<div class="pf-tabs" data-pf-tabs>
+				<div class="pf-tabs-nav" role="tablist" aria-label="Categorias do portfólio">
+					<button type="button" class="pf-tab-btn is-active" role="tab" aria-selected="true" data-tab-target="livros">Livros</button>
+					<button type="button" class="pf-tab-btn" role="tab" aria-selected="false" data-tab-target="textos">Textos</button>
+					<button type="button" class="pf-tab-btn" role="tab" aria-selected="false" data-tab-target="ilustracoes">Ilustrações</button>
+					<button type="button" class="pf-tab-btn" role="tab" aria-selected="false" data-tab-target="zines">Zines</button>
 				</div>
 
-				<div class="pf-portfolio-card">
-					<span class="pf-portfolio-tag">Projeto / Programa</span>
-					<h3>Diáspora Negra</h3>
-					<p>Projeto e programa de gestão de projetos e captação de recursos, com curadoria voltada à ancestralidade e cultura negra.</p>
-					<div style="text-align:center;">
-						<a class="pf-btn pf-btn-solid" target="_blank" rel="noopener noreferrer" href="https://wa.me/<?php echo esc_attr( pf_whatsapp_number() ); ?>?text=<?php echo esc_attr( $wa_diaspora ); ?>">Saber mais</a>
+				<div class="pf-tab-panel is-active" id="tab-livros" role="tabpanel">
+					<div class="pf-book-grid">
+						<div class="pf-book-card">
+							<span class="pf-portfolio-tag">Livro</span>
+							<h3>Diáspora Negra</h3>
+							<img src="<?php echo esc_url( $img . 'diaspora-negra.jpeg' ); ?>" alt="Capa do livro Diáspora Negra" class="pf-book-cover" style="object-position: top;">
+
+							<div class="pf-book-price-group">
+								<span>R$ 20 - Livro Digital</span>
+								<span>R$ 35 - Livro físico</span>
+							</div>
+
+							<p>Projeto e programa de gestão de projetos e captação de recursos, com curadoria voltada à ancestralidade e cultura negra.</p>
+
+							<div style="text-align:center; margin-top: 14px">
+								<a class="pf-btn pf-btn-solid" target="_blank" rel="noopener noreferrer" href="https://wa.me/<?php echo esc_attr( pf_whatsapp_number() ); ?>?text=<?php echo esc_attr( $wa_diaspora ); ?>">Comprar pelo WhatsApp</a>
+							</div>
+						</div>
+						<div class="pf-book-card">
+							<span class="pf-portfolio-tag">Livro</span>
+							<h3>Surrealírico</h3>
+							<img src="<?php echo esc_url( $img . 'surrealirico.png' ); ?>" alt="Capa do livro Surrealírico" class="pf-book-cover">
+
+							<div class="pf-book-price-group">
+								<span>R$ 25</span>
+							</div>
+
+							<p>Existem facetas que se desenvolvem e muitas vezes não são exploradas a fundo: personas em simbiose com a face mais externa, aquela que dá a cara a tapa. Em “Surrealírico” adentro o romântico sonhador, o visceral, o louco, deixando que venham à tona sem medo da exposição.</p>
+							<p>Composto de cinco poesias e um pequeno conto, este livro é meu manto de timidez sendo removido, revelando por baixo a psicodelia diária canalizada na arte. O lúcido e o lúdico descritos e ilustrados com os mesmos traços de sinceridade.</p>
+
+							<div class="pf-book-details">
+								<h4>Detalhes do livro</h4>
+								<ul>
+									<li>Tam: 12×21</li>
+									<li>Páginas: 16</li>
+									<li>Ilustrado pelo autor</li>
+									<li>Colorido</li>
+									<li>Costura Manual</li>
+								</ul>
+							</div>
+
+							<div style="text-align:center;">
+								<a class="pf-btn pf-btn-solid" target="_blank" rel="noopener noreferrer" href="https://avaeditora.com.br/p/livro-surrealirico-pablo-figueroa/">Comprar</a>
+							</div>
+						</div>
 					</div>
+					
+				</div>
+
+				<div class="pf-tab-panel" id="tab-textos" role="tabpanel" hidden>
+					<p class="pf-tab-empty">Em breve, novos textos serão publicados por aqui.</p>
+				</div>
+
+				<div class="pf-tab-panel" id="tab-ilustracoes" role="tabpanel" hidden>
+					<p class="pf-tab-empty">Em breve, novas ilustrações serão publicadas por aqui.</p>
+				</div>
+
+				<div class="pf-tab-panel" id="tab-zines" role="tabpanel" hidden>
+					<p class="pf-tab-empty">Em breve, novos zines serão publicados por aqui.</p>
 				</div>
 			</div>
 		</div>
@@ -57,16 +106,16 @@ $wa_diaspora     = rawurlencode( 'Olá, Pablo! Tenho interesse em saber mais sob
 
 	<section class="pf-section pf-section-alt">
 		<div class="pf-container">
-			<span class="pf-eyebrow">Curadoria e exposições</span>
+			<span class="pf-eyebrow">Curadoria e coletivos</span>
 			<h2>Projetos artísticos</h2>
 			<ul class="pf-timeline">
 				<li>
 					<strong>O Encanto Era Eu</strong>
-					<span>Projeto / Exposição — curadoria e produção.</span>
+					<span>Projeto — curadoria e produção.</span>
 				</li>
 				<li>
 					<strong>Domingão TN1</strong>
-					<span>Ações artísticas em parceria com o coletivo TN1.</span>
+					<span>Intervenções artísticas em parceria com o coletivo TN1.</span>
 				</li>
 				<li>
 					<strong>Cer.Coletivo</strong>

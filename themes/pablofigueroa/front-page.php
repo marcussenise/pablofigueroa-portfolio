@@ -156,13 +156,6 @@ $wa_msg  = rawurlencode( 'Olá, Pablo! Vi seu portfólio e gostaria de falar sob
 							<span class="pf-contact-value">@<?php echo esc_html( pf_instagram_geral_handle() ); ?></span>
 						</a>
 					</li>
-					<li class="pf-contact-item">
-						<span class="pf-contact-icon"><img src="<?php echo esc_url( $icons . 'linkedin.png' ); ?>" alt="" loading="lazy"></span>
-						<a href="https://linkedin.com/in/<?php echo esc_attr( pf_linkedin_handle() ); ?>" target="_blank" rel="noopener noreferrer">
-							<span class="pf-contact-label">LinkedIn</span>
-							<span class="pf-contact-value">@<?php echo esc_html( pf_linkedin_handle() ); ?></span>
-						</a>
-					</li>
 				</ul>
 
 				<div class="pf-contact-card">

@@ -21,7 +21,6 @@ $pf_icons   = get_template_directory_uri() . '/assets/img/icones/';
 
 				<div class="pf-footer-social">
 					<a href="https://instagram.com/<?php echo esc_attr( pf_instagram_geral_handle() ); ?>" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="<?php echo esc_url( $pf_icons . 'instagram.png' ); ?>" alt="" loading="lazy"></a>
-					<a href="https://linkedin.com/in/<?php echo esc_attr( pf_linkedin_handle() ); ?>" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><img src="<?php echo esc_url( $pf_icons . 'linkedin.png' ); ?>" alt="" loading="lazy"></a>
 					<a href="https://wa.me/<?php echo esc_attr( pf_whatsapp_number() ); ?>" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><img src="<?php echo esc_url( $pf_icons . 'whatsapp.png' ); ?>" alt="" loading="lazy"></a>
 					<a href="mailto:<?php echo esc_attr( pf_email() ); ?>" aria-label="E-mail"><img src="<?php echo esc_url( $pf_icons . 'mensagem.png' ); ?>" alt="" loading="lazy"></a>
 				</div>

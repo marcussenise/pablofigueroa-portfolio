@@ -49,7 +49,46 @@
 
 		initFloatingPhotos();
 		initHeaderScroll();
+		initPortfolioTabs();
 	});
+
+	/**
+	 * Abas clicáveis do Portfólio Arte (Livros, Textos, Ilustrações, Zines).
+	 */
+	function initPortfolioTabs() {
+		var wrapper = document.querySelector('[data-pf-tabs]');
+
+		if (!wrapper) {
+			return;
+		}
+
+		var buttons = wrapper.querySelectorAll('.pf-tab-btn');
+
+		buttons.forEach(function (btn) {
+			btn.addEventListener('click', function () {
+				var target = btn.getAttribute('data-tab-target');
+				var panel = wrapper.querySelector('#tab-' + target);
+
+				if (!panel) {
+					return;
+				}
+
+				buttons.forEach(function (b) {
+					b.classList.remove('is-active');
+					b.setAttribute('aria-selected', 'false');
+				});
+				wrapper.querySelectorAll('.pf-tab-panel').forEach(function (p) {
+					p.classList.remove('is-active');
+					p.hidden = true;
+				});
+
+				btn.classList.add('is-active');
+				btn.setAttribute('aria-selected', 'true');
+				panel.classList.add('is-active');
+				panel.hidden = false;
+			});
+		});
+	}
 
 	/**
 	 * O header começa transparente para dar destaque ao sankofa no hero;

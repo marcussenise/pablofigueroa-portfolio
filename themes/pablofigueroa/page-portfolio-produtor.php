@@ -51,7 +51,7 @@ $wa_msg = rawurlencode( 'Olá, Pablo! Vi seu portfólio de produção e gostaria
 				</li>
 				<li>
 					<strong>Domingão TN1</strong>
-					<span>Produção de ações do coletivo TN1.</span>
+					<span>Intervenções artísticas.</span>
 				</li>
 				<li>
 					<strong>Green Lab</strong>
