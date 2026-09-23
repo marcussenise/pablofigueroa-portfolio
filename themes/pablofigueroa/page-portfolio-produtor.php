@@ -32,40 +32,54 @@ $wa_msg = rawurlencode( 'Olá, Pablo! Vi seu portfólio de produção e gostaria
 			<span class="pf-eyebrow">Experiência profissional</span>
 			<h2>Produções e projetos</h2>
 
-			<ul class="pf-timeline">
-				<li>
-					<strong>Direção Criativa — Satélite HUB</strong>
-					<span>Produção de eventos e direção criativa na empresa.</span>
-				</li>
-				<li>
-					<strong>Festival Fluxos</strong>
-					<span>Produção e gestão comprovadas pelo Senac e iniciativas independentes.</span>
-				</li>
-				<li>
-					<strong>Diáspora Negra</strong>
-					<span>Gestão de projetos e captação de recursos.</span>
-				</li>
-				<li>
-					<strong>O Encanto Era Eu</strong>
-					<span>Curadoria e produção de projeto/exposição.</span>
-				</li>
-				<li>
-					<strong>Domingão TN1</strong>
-					<span>Intervenções artísticas.</span>
-				</li>
-				<li>
-					<strong>Green Lab</strong>
-					<span>Produção e gestão de projeto cultural.</span>
-				</li>
-				<li>
-					<strong>Copão</strong>
-					<span>Produção e gestão de projeto cultural.</span>
-				</li>
-				<li>
-					<strong>Lançamento do livro Surrealírico — Feira do Livro 2022</strong>
-					<span>Produção do lançamento editorial.</span>
-				</li>
-			</ul>
+			<div class="pf-experience-grid">
+				<ul class="pf-timeline">
+					<li>
+						<strong>Direção Criativa — Satélite HUB</strong>
+						<span>Produção de eventos e direção criativa na empresa.</span>
+					</li>
+					<li>
+						<strong>Festival Fluxos</strong>
+						<span>Produção e gestão comprovadas pelo Senac e iniciativas independentes.</span>
+					</li>
+					<li>
+						<strong>Diáspora Negra</strong>
+						<span>Gestão de projetos e captação de recursos.</span>
+					</li>
+					<li>
+						<strong>O Encanto Era Eu</strong>
+						<span>Curadoria e produção de projeto/exposição.</span>
+					</li>
+					<li>
+						<strong>Domingão TN1</strong>
+						<span>Intervenções artísticas.</span>
+					</li>
+					<li>
+						<strong>Green Lab</strong>
+						<span>Produção e gestão de projeto cultural.</span>
+					</li>
+					<li>
+						<strong>Copão</strong>
+						<span>Produção e gestão de projeto cultural.</span>
+					</li>
+					<li>
+						<strong>Lançamento do livro Surrealírico — Feira do Livro 2022</strong>
+						<span>Produção do lançamento editorial.</span>
+					</li>
+				</ul>
+
+				<div class="pf-collage" aria-hidden="true">
+					<div class="pf-photo pf-collage-1 pf-float" data-depth="10">
+						<img src="<?php echo esc_url( $img . 'portfolio-produtor/KLBR-brunogustavo-18-light.jpg' ); ?>" alt="" loading="lazy">
+					</div>
+					<div class="pf-photo pf-collage-2 pf-float" data-depth="18">
+						<img src="<?php echo esc_url( $img . 'portfolio-produtor/KLBR-brunogustavo-34-light.jpg' ); ?>" alt="" loading="lazy">
+					</div>
+					<div class="pf-photo pf-collage-3 pf-float" data-depth="14">
+						<img src="<?php echo esc_url( $img . 'portfolio-produtor/KLBR-brunogustavo-24-light.jpg' ); ?>" alt="" loading="lazy">
+					</div>
+				</div>
+			</div>
 		</div>
 	</section>
 

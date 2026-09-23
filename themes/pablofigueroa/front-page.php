@@ -38,7 +38,7 @@ $wa_msg  = rawurlencode( 'Olá, Pablo! Vi seu portfólio e gostaria de falar sob
 
 			<div class="pf-hero-photos">
 				<div class="pf-photo pf-float" data-depth="16">
-					<img src="<?php echo esc_url( $img . 'KLBR-brunogustavo-18.jpg' ); ?>" alt="Pablo Figueroa — retrato" loading="eager">
+					<img src="<?php echo esc_url( $img . 'portfolio-produtor/KLBR-brunogustavo-18-light.jpg' ); ?>" alt="Pablo Figueroa — retrato" loading="eager">
 				</div>
 			</div>
 		</div>
@@ -51,7 +51,7 @@ $wa_msg  = rawurlencode( 'Olá, Pablo! Vi seu portfólio e gostaria de falar sob
 				<span class="pf-eyebrow">Apresentação</span>
 				<h2>Quem é Pablo</h2>
 				<div class="pf-photo pf-bio-photo pf-float" data-depth="12">
-					<img src="<?php echo esc_url( $img . 'KLBR-brunogustavo-21.jpg' ); ?>" alt="Pablo Figueroa em produção" loading="lazy">
+					<img src="<?php echo esc_url( $img . 'portfolio-produtor/KLBR-brunogustavo-21-light.jpg' ); ?>" alt="Pablo Figueroa em produção" loading="lazy">
 				</div>
 			</div>
 
@@ -79,17 +79,27 @@ $wa_msg  = rawurlencode( 'Olá, Pablo! Vi seu portfólio e gostaria de falar sob
 		</div>
 	</section>
 
-	<!-- INSTAGRAM -->
-	<section class="pf-section">
-		<div class="pf-container" style="text-align:center;">
-			<span class="pf-eyebrow">Acompanhe e adquira</span>
-			<h2>Veja mais no Instagram</h2>
-			<p class="pf-hero-lead" style="margin:0 auto 2em;">Novas artes, bastidores e lançamentos são publicados primeiro por lá.</p>
-
-			<a class="pf-instagram-frame" href="https://www.instagram.com/<?php echo esc_attr( pf_instagram_arte_handle() ); ?>" target="_blank" rel="noopener noreferrer">
-				<img src="<?php echo esc_url( $img . 'instagram-demo.png' ); ?>" alt="Instagram @<?php echo esc_attr( pf_instagram_arte_handle() ); ?>" loading="lazy">
-				<span class="pf-instagram-handle">@<?php echo esc_html( pf_instagram_arte_handle() ); ?></span>
-			</a>
+	<!-- PORTFÓLIO -->
+	<section id="portfolio" class="pf-section">
+		<div class="pf-container">
+			<span class="pf-eyebrow">Trabalhos</span>
+			<h2>Portfólio</h2>
+			<div class="pf-portfolio-grid">
+				<div class="pf-portfolio-card">
+					<span class="pf-portfolio-tag">Artista</span>
+					<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/' . rawurlencode( 'Ilustrações' ) . '/' . rawurlencode( 'Figura no balanço ao entardecer.png' ) ); ?>" alt="Ilustração Figura no balanço ao entardecer, de Pablo Figueroa" class="pf-portfolio-card-img" loading="lazy">
+					<h3>Portfólio Arte</h3>
+					<p>Obras literárias, produções autorais e trabalhos artísticos — Surrealírico, Diáspora Negra e criações do dia a dia.</p>
+					<a href="<?php echo esc_url( get_permalink( $arte_id ) ); ?>" class="pf-btn pf-btn-solid">Explorar arte</a>
+				</div>
+				<div class="pf-portfolio-card">
+					<span class="pf-portfolio-tag">Produtor</span>
+					<img src="<?php echo esc_url( $img . 'portfolio-produtor/KLBR-brunogustavo-19-light.jpg' ); ?>" alt="Pablo Figueroa em produção cultural" class="pf-portfolio-card-img" loading="lazy">
+					<h3>Portfólio Produtor</h3>
+					<p>Experiência em gestão e produção de eventos, festivais e projetos culturais independentes.</p>
+					<a href="<?php echo esc_url( get_permalink( $prod_id ) ); ?>" class="pf-btn pf-btn-solid">Ver produções</a>
+				</div>
+			</div>
 		</div>
 	</section>
 
@@ -111,25 +121,17 @@ $wa_msg  = rawurlencode( 'Olá, Pablo! Vi seu portfólio e gostaria de falar sob
 		</div>
 	</section>
 
-	<!-- PORTFÓLIO -->
-	<section id="portfolio" class="pf-section pf-section-alt">
-		<div class="pf-container">
-			<span class="pf-eyebrow">Trabalhos</span>
-			<h2>Portfólio</h2>
-			<div class="pf-portfolio-grid">
-				<div class="pf-portfolio-card">
-					<span class="pf-portfolio-tag">Artista</span>
-					<h3>Portfólio Arte</h3>
-					<p>Obras literárias, produções autorais e trabalhos artísticos — Surrealírico, Diáspora Negra e criações do dia a dia.</p>
-					<a href="<?php echo esc_url( get_permalink( $arte_id ) ); ?>" class="pf-btn pf-btn-solid">Explorar arte</a>
-				</div>
-				<div class="pf-portfolio-card">
-					<span class="pf-portfolio-tag">Produtor</span>
-					<h3>Portfólio Produtor</h3>
-					<p>Experiência em gestão e produção de eventos, festivais e projetos culturais independentes.</p>
-					<a href="<?php echo esc_url( get_permalink( $prod_id ) ); ?>" class="pf-btn pf-btn-solid">Ver produções</a>
-				</div>
-			</div>
+	<!-- INSTAGRAM -->
+	<section class="pf-section pf-section-alt">
+		<div class="pf-container" style="text-align:center;">
+			<span class="pf-eyebrow">Acompanhe e adquira</span>
+			<h2>Veja mais no Instagram</h2>
+			<p class="pf-hero-lead" style="margin:0 auto 2em;">Novas artes, bastidores e lançamentos são publicados primeiro por lá.</p>
+
+			<a class="pf-instagram-frame" href="https://www.instagram.com/<?php echo esc_attr( pf_instagram_arte_handle() ); ?>" target="_blank" rel="noopener noreferrer">
+				<img src="<?php echo esc_url( $img . 'instagram-demo.png' ); ?>" alt="Instagram @<?php echo esc_attr( pf_instagram_arte_handle() ); ?>" loading="lazy">
+				<span class="pf-instagram-handle">@<?php echo esc_html( pf_instagram_arte_handle() ); ?></span>
+			</a>
 		</div>
 	</section>
 

@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'PF_VERSION', '1.0.0' );
+define( 'PF_VERSION', '1.1.4' );
 
 /**
  * Theme setup.
@@ -36,6 +36,30 @@ function pf_assets() {
 	wp_enqueue_script( 'pf-main', get_template_directory_uri() . '/assets/js/main.js', array(), PF_VERSION, true );
 }
 add_action( 'wp_enqueue_scripts', 'pf_assets' );
+
+/**
+ * Lista as imagens de uma pasta dentro de assets/ (ordem natural pelo nome).
+ *
+ * @param string $folder Caminho relativo a assets/, ex.: 'img/Ilustrações' ou 'textos'.
+ * @return string[] URLs das imagens.
+ */
+function pf_get_gallery_images( $folder ) {
+	$dir  = get_template_directory() . '/assets/' . $folder;
+	$base = get_template_directory_uri() . '/assets/' . implode( '/', array_map( 'rawurlencode', explode( '/', $folder ) ) ) . '/';
+
+	if ( ! is_dir( $dir ) ) {
+		return array();
+	}
+
+	$files = array_filter( scandir( $dir ), function ( $file ) {
+		return (bool) preg_match( '/\.(jpe?g|png|webp|gif)$/i', $file );
+	} );
+	natcasesort( $files );
+
+	return array_map( function ( $file ) use ( $base ) {
+		return $base . rawurlencode( $file );
+	}, array_values( $files ) );
+}
 
 /**
  * Fallback menu when no menu is assigned.

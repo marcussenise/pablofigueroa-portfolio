@@ -50,7 +50,118 @@
 		initFloatingPhotos();
 		initHeaderScroll();
 		initPortfolioTabs();
+		document.querySelectorAll('[data-pf-gallery]').forEach(initGallery);
 	});
+
+	/**
+	 * Galeria (ilustrações, textos...): ao clicar numa miniatura abre um carrossel
+	 * em tela cheia com navegação (botões, setas do teclado e swipe).
+	 * Cada [data-pf-gallery] ganha seu próprio carrossel.
+	 */
+	function initGallery(gallery) {
+		var items = gallery.querySelectorAll('.pf-gallery-item');
+		var sources = Array.prototype.map.call(items, function (item) {
+			var img = item.querySelector('img');
+			return { src: img.getAttribute('src'), alt: img.getAttribute('alt') };
+		});
+		var current = 0;
+		var lastFocus = null;
+
+		var lightbox = document.createElement('div');
+		lightbox.className = 'pf-lightbox';
+		lightbox.hidden = true;
+		lightbox.setAttribute('role', 'dialog');
+		lightbox.setAttribute('aria-modal', 'true');
+		lightbox.setAttribute('aria-label', gallery.getAttribute('data-pf-gallery') || 'Galeria');
+		lightbox.innerHTML =
+			'<button type="button" class="pf-lightbox-close" aria-label="Fechar">&times;</button>' +
+			'<button type="button" class="pf-lightbox-nav pf-lightbox-prev" aria-label="Anterior">&#8249;</button>' +
+			'<figure class="pf-lightbox-figure"><img class="pf-lightbox-img" alt=""></figure>' +
+			'<button type="button" class="pf-lightbox-nav pf-lightbox-next" aria-label="Próxima">&#8250;</button>' +
+			'<span class="pf-lightbox-counter"></span>';
+		document.body.appendChild(lightbox);
+
+		var imgEl = lightbox.querySelector('.pf-lightbox-img');
+		var counter = lightbox.querySelector('.pf-lightbox-counter');
+		var closeBtn = lightbox.querySelector('.pf-lightbox-close');
+
+		// Com uma única imagem não há o que navegar.
+		if (sources.length < 2) {
+			lightbox.classList.add('is-single');
+		}
+
+		function show(index) {
+			current = (index + sources.length) % sources.length;
+			imgEl.src = sources[current].src;
+			imgEl.alt = sources[current].alt;
+			counter.textContent = (current + 1) + ' / ' + sources.length;
+		}
+
+		function open(index) {
+			lastFocus = document.activeElement;
+			show(index);
+			lightbox.hidden = false;
+			document.body.style.overflow = 'hidden';
+			closeBtn.focus();
+		}
+
+		function close() {
+			lightbox.hidden = true;
+			document.body.style.overflow = '';
+			if (lastFocus) {
+				lastFocus.focus();
+			}
+		}
+
+		items.forEach(function (item, i) {
+			item.addEventListener('click', function () {
+				open(i);
+			});
+		});
+
+		closeBtn.addEventListener('click', close);
+		lightbox.querySelector('.pf-lightbox-prev').addEventListener('click', function () {
+			show(current - 1);
+		});
+		lightbox.querySelector('.pf-lightbox-next').addEventListener('click', function () {
+			show(current + 1);
+		});
+
+		// Clicar fora da imagem fecha.
+		lightbox.addEventListener('click', function (e) {
+			if (e.target === lightbox || e.target.classList.contains('pf-lightbox-figure')) {
+				close();
+			}
+		});
+
+		document.addEventListener('keydown', function (e) {
+			if (lightbox.hidden) {
+				return;
+			}
+			if (e.key === 'Escape') {
+				close();
+			} else if (e.key === 'ArrowLeft') {
+				show(current - 1);
+			} else if (e.key === 'ArrowRight') {
+				show(current + 1);
+			}
+		});
+
+		var touchX = null;
+		lightbox.addEventListener('touchstart', function (e) {
+			touchX = e.touches[0].clientX;
+		}, { passive: true });
+		lightbox.addEventListener('touchend', function (e) {
+			if (touchX === null) {
+				return;
+			}
+			var dx = e.changedTouches[0].clientX - touchX;
+			if (Math.abs(dx) > 50) {
+				show(current + (dx < 0 ? 1 : -1));
+			}
+			touchX = null;
+		});
+	}
 
 	/**
 	 * Abas clicáveis do Portfólio Arte (Livros, Textos, Ilustrações, Zines).

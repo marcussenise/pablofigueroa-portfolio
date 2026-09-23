@@ -90,11 +90,33 @@ $wa_diaspora = rawurlencode( 'Olá, Pablo! Tenho interesse em saber mais sobre o
 				</div>
 
 				<div class="pf-tab-panel" id="tab-textos" role="tabpanel" hidden>
-					<p class="pf-tab-empty">Em breve, novos textos serão publicados por aqui.</p>
+					<?php $textos = pf_get_gallery_images( 'textos' ); ?>
+					<?php if ( $textos ) : ?>
+						<div class="pf-gallery" data-pf-gallery="Galeria de textos">
+							<?php foreach ( $textos as $i => $src ) : ?>
+								<button type="button" class="pf-gallery-item" data-index="<?php echo esc_attr( $i ); ?>" aria-label="Ampliar texto <?php echo esc_attr( $i + 1 ); ?>">
+									<img src="<?php echo esc_url( $src ); ?>" alt="Poema <?php echo esc_attr( $i + 1 ); ?> de Pablo Figueroa" loading="lazy">
+								</button>
+							<?php endforeach; ?>
+						</div>
+					<?php else : ?>
+						<p class="pf-tab-empty">Em breve, novos textos serão publicados por aqui.</p>
+					<?php endif; ?>
 				</div>
 
 				<div class="pf-tab-panel" id="tab-ilustracoes" role="tabpanel" hidden>
-					<p class="pf-tab-empty">Em breve, novas ilustrações serão publicadas por aqui.</p>
+					<?php $illustrations = pf_get_gallery_images( 'img/Ilustrações' ); ?>
+					<?php if ( $illustrations ) : ?>
+						<div class="pf-gallery" data-pf-gallery="Galeria de ilustrações">
+							<?php foreach ( $illustrations as $i => $src ) : ?>
+								<button type="button" class="pf-gallery-item" data-index="<?php echo esc_attr( $i ); ?>" aria-label="Ampliar ilustração <?php echo esc_attr( $i + 1 ); ?>">
+									<img src="<?php echo esc_url( $src ); ?>" alt="Ilustração <?php echo esc_attr( $i + 1 ); ?> de Pablo Figueroa" loading="lazy">
+								</button>
+							<?php endforeach; ?>
+						</div>
+					<?php else : ?>
+						<p class="pf-tab-empty">Em breve, novas ilustrações serão publicadas por aqui.</p>
+					<?php endif; ?>
 				</div>
 
 				<div class="pf-tab-panel" id="tab-zines" role="tabpanel" hidden>

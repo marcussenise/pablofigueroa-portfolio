@@ -483,6 +483,9 @@ h1, h2, h3, h4 {
 .pf-portfolio-card .pf-btn {
 	position: relative;
 	z-index: 2;
+	display: flex;
+	width: fit-content;
+	margin: 0 auto;
 }
 
 .pf-portfolio-tag {
@@ -529,6 +532,167 @@ h1, h2, h3, h4 {
 
 .pf-tab-panel[hidden] {
 	display: none;
+}
+
+/* Imagem de destaque no card da home */
+.pf-portfolio-card-img {
+	display: block;
+	width: 100%;
+	aspect-ratio: 4 / 3;
+	object-fit: cover;
+	object-position: center 30%;
+	border-radius: calc(var(--pf-radius) - 4px);
+	margin-bottom: 20px;
+}
+
+/* Galeria de ilustrações */
+/* Layout em colunas (masonry): cada ilustração mantém sua proporção original, sem cortes. */
+.pf-gallery {
+	columns: 4 200px;
+	column-gap: 16px;
+}
+
+.pf-gallery-item {
+	display: block;
+	width: 100%;
+	padding: 0;
+	margin: 0 0 16px;
+	border: 1px solid var(--pf-border);
+	border-radius: var(--pf-radius);
+	overflow: hidden;
+	background: var(--pf-bg-card);
+	break-inside: avoid;
+	cursor: zoom-in;
+}
+
+.pf-gallery-item img {
+	display: block;
+	width: 100%;
+	height: auto;
+	transition: transform 0.35s ease;
+}
+
+.pf-gallery-item:hover img,
+.pf-gallery-item:focus-visible img {
+	transform: scale(1.05);
+}
+
+.pf-gallery-item:focus-visible {
+	outline: 2px solid var(--pf-accent);
+	outline-offset: 2px;
+}
+
+/* Carrossel (lightbox) */
+.pf-lightbox {
+	position: fixed;
+	inset: 0;
+	z-index: 1000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(20, 17, 14, 0.94);
+}
+
+.pf-lightbox[hidden] {
+	display: none;
+}
+
+.pf-lightbox.is-single .pf-lightbox-nav,
+.pf-lightbox.is-single .pf-lightbox-counter {
+	display: none;
+}
+
+.pf-lightbox-figure {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 64px 80px;
+}
+
+.pf-lightbox-img {
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: contain;
+	border-radius: 6px;
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.pf-lightbox-close,
+.pf-lightbox-nav {
+	position: absolute;
+	border: 0;
+	background: rgba(255, 255, 255, 0.1);
+	color: #fff;
+	cursor: pointer;
+	border-radius: 999px;
+	line-height: 1;
+	transition: background 0.2s ease;
+}
+
+.pf-lightbox-close:hover,
+.pf-lightbox-nav:hover {
+	background: var(--pf-accent);
+}
+
+.pf-lightbox-close {
+	top: 16px;
+	right: 16px;
+	width: 44px;
+	height: 44px;
+	font-size: 2rem;
+}
+
+.pf-lightbox-nav {
+	top: 50%;
+	transform: translateY(-50%);
+	width: 52px;
+	height: 52px;
+	font-size: 2.4rem;
+	padding-bottom: 4px;
+}
+
+.pf-lightbox-prev {
+	left: 16px;
+}
+
+.pf-lightbox-next {
+	right: 16px;
+}
+
+.pf-lightbox-counter {
+	position: absolute;
+	bottom: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+	color: rgba(255, 255, 255, 0.8);
+	font-size: 0.9rem;
+	letter-spacing: 0.05em;
+}
+
+@media (max-width: 640px) {
+	.pf-gallery {
+		columns: 2;
+		column-gap: 10px;
+	}
+
+	.pf-gallery-item {
+		margin-bottom: 10px;
+	}
+
+	.pf-lightbox-figure {
+		padding: 64px 12px;
+	}
+
+	.pf-lightbox-nav {
+		top: auto;
+		bottom: 12px;
+		transform: none;
+		width: 44px;
+		height: 44px;
+	}
 }
 
 .pf-tab-empty {
@@ -616,6 +780,67 @@ h1, h2, h3, h4 {
 	border-left: 2px solid var(--pf-border);
 }
 
+/* Experiência profissional: timeline à esquerda, colagem de fotos à direita */
+.pf-experience-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 56px;
+	align-items: center;
+}
+
+/* Colagem: fotos em tamanhos e alinhamentos diferentes, levemente sobrepostas */
+.pf-collage {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	grid-template-rows: repeat(7, 64px) auto;
+}
+
+.pf-collage .pf-photo img {
+	aspect-ratio: auto;
+}
+
+.pf-collage-1 {
+	grid-column: 1 / 5;
+	grid-row: 1 / 5;
+	z-index: 1;
+}
+
+.pf-collage-2 {
+	grid-column: 4 / 7;
+	grid-row: 3 / 6;
+	z-index: 2;
+}
+
+/* Foto 24 aparece inteira, na proporção original (sem cortes);
+   a última linha da colagem é "auto" e cresce para caber a imagem. */
+.pf-collage-3 {
+	grid-column: 2 / 7;
+	grid-row: 6 / -1;
+	align-self: start;
+	z-index: 3;
+}
+
+.pf-collage .pf-collage-3 img {
+	height: auto;
+}
+
+@media (max-width: 880px) {
+	.pf-experience-grid {
+		grid-template-columns: 1fr;
+		gap: 40px;
+	}
+
+	.pf-collage {
+		grid-template-rows: repeat(7, 48px) auto;
+	}
+}
+
+@media (max-width: 640px) {
+	.pf-collage {
+		grid-template-rows: repeat(7, 38px) auto;
+	}
+}
+
 .pf-timeline li {
 	position: relative;
 	padding: 4px 0 26px 28px;
@@ -642,20 +867,6 @@ h1, h2, h3, h4 {
 .pf-timeline span {
 	color: var(--pf-white-soft);
 	font-size: 0.92rem;
-}
-
-/* ---------- Galeria ---------- */
-.pf-gallery {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 16px;
-}
-
-.pf-gallery img {
-	border-radius: var(--pf-radius);
-	aspect-ratio: 4/5;
-	object-fit: cover;
-	border: 1px solid var(--pf-border);
 }
 
 /* ---------- Contato ---------- */
@@ -992,10 +1203,6 @@ h1, h2, h3, h4 {
 		grid-template-columns: 1fr;
 	}
 
-	.pf-gallery {
-		grid-template-columns: repeat(2, 1fr);
-	}
-
 	.pf-section {
 		padding: 56px 0;
 	}
@@ -1107,8 +1314,7 @@ h1, h2, h3, h4 {
 		white-space: nowrap;
 	}
 
-	.pf-books,
-	.pf-gallery {
+	.pf-books {
 		grid-template-columns: 1fr;
 	}
 
